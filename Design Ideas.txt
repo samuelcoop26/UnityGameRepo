@@ -1,0 +1,29 @@
+﻿Player character:
+1. One or more
+2. Inbuilt lore
+3. Abilities
+4. Dialogue possibilities
+
+
+Level Design:
+1. Segmented or open world
+2. Closed spaces or open spaces, whether interior or exterior
+3. Focus on grounded movement or platforming
+4. Should there be distinct zones
+5. How long should the game be?
+
+
+Enemies:
+1. Design first or function first, maybe both. 
+2. One hit kills or hp based system
+3. Should there be a combat overlay from enemy encounter, like rpg style for instance
+4. Should there be item drops?
+5. Bosses, how many?
+6. Should monsters talk?
+7. Should the monsters be perma-killable?
+
+
+Plot:
+1. Surface level to move forward game or deepest lore style
+2. Document based or dialogue based, where the other is supplementary
+3. Npc’s? Environmental storytelling?
