@@ -35,45 +35,96 @@ class Player(pygame.sprite.Sprite):
 
         # Call the parent's constructor
         pygame.sprite.Sprite.__init__(self)
-
-        sprite_sheet = SpriteSheet("p1_walk.png")
+        player_w=134-2
+        player_h=198+2
+        sprite_sheet = SpriteSheet("template_char.png")
         # Load all the right facing images into a list
-        image = sprite_sheet.get_image(0, 0, 66, 90)
+        '''
+        image = sprite_sheet.get_image(0,0, player_w, player_h)
+        image = pygame.transform.scale(image, (player_w*3,player_h*3))
         self.walking_frames_r.append(image)
-        image = sprite_sheet.get_image(66, 0, 66, 90)
+        image = sprite_sheet.get_image(0, 99*2, player_w, player_h)
+        image = pygame.transform.scale(image, (player_w*3,player_h*3))
         self.walking_frames_r.append(image)
-        image = sprite_sheet.get_image(132, 0, 67, 90)
+        image = sprite_sheet.get_image(0,198*2, player_w, player_h)
+        image = pygame.transform.scale(image, (player_w*3,player_h*3))
         self.walking_frames_r.append(image)
-        image = sprite_sheet.get_image(0, 93, 66, 90)
+        image = sprite_sheet.get_image(66*2, 0, player_w, player_h)
+        image = pygame.transform.scale(image, (player_w*3,player_h*3))
         self.walking_frames_r.append(image)
-        image = sprite_sheet.get_image(66, 93, 66, 90)
+        image = sprite_sheet.get_image(66*2, 99*2, player_w, player_h)
+        image = pygame.transform.scale(image, (player_w*3,player_h*3))
         self.walking_frames_r.append(image)
-        image = sprite_sheet.get_image(132, 93, 72, 90)
+        image = sprite_sheet.get_image(66*2, 198*2, player_w, player_h)
+        image = pygame.transform.scale(image, (player_w*3,player_h*3))
         self.walking_frames_r.append(image)
-        image = sprite_sheet.get_image(0, 186, 70, 90)
+        image = sprite_sheet.get_image(134*2, 0, player_w, player_h)
+        image = pygame.transform.scale(image, (player_w*3,player_h*3))
+        self.walking_frames_r.append(image)
+        '''
+        
+        image = sprite_sheet.get_image(0, 0, player_w, player_h)
+        image = pygame.transform.scale(image, (player_w*3,player_h*3))
+        self.walking_frames_r.append(image)
+        
+        image = sprite_sheet.get_image(player_w, 0,player_w, player_h)
+        image = pygame.transform.scale(image, (player_w*3,player_h*3))
+        self.walking_frames_r.append(image)
+        
+        image = sprite_sheet.get_image(player_w*2, 0, player_w, player_h)
+        image = pygame.transform.scale(image, (player_w*3,player_h*3))
+        self.walking_frames_r.append(image)
+        
+        image = sprite_sheet.get_image(0, player_h, player_w, player_h)
+        image = pygame.transform.scale(image, (player_w*3,player_h*3))
+        self.walking_frames_r.append(image)
+        
+        image = sprite_sheet.get_image(player_w, player_h, player_w, player_h)
+        image = pygame.transform.scale(image, (player_w*3,player_h*3))
+        self.walking_frames_r.append(image)
+        
+        image = sprite_sheet.get_image(player_w*2, player_h, player_w, player_h)
+        image = pygame.transform.scale(image, (player_w*3,player_h*3))
         self.walking_frames_r.append(image)
 
-        # Load all the right facing images, then flip them
+        image = sprite_sheet.get_image(0, 2*player_h, player_w,player_h)
+        image = pygame.transform.scale(image, (player_w*3,player_h*3))
+        self.walking_frames_r.append(image)
+
+        #        # Load all the right facing images, then flip them
         # to face left.
-        image = sprite_sheet.get_image(0, 0, 66, 90)
+        image = sprite_sheet.get_image(0, 0, player_w, player_h)
+        image = pygame.transform.scale(image, (player_w*3,player_h*3))
         image = pygame.transform.flip(image, True, False)
         self.walking_frames_l.append(image)
-        image = sprite_sheet.get_image(66, 0, 66, 90)
+        
+        image = sprite_sheet.get_image(player_w, 0,player_w, player_h)
+        image = pygame.transform.scale(image, (player_w*3,player_h*3))
         image = pygame.transform.flip(image, True, False)
         self.walking_frames_l.append(image)
-        image = sprite_sheet.get_image(132, 0, 67, 90)
+        
+        image = sprite_sheet.get_image(player_w*2, 0, player_w, player_h)
+        image = pygame.transform.scale(image, (player_w*3,player_h*3))
         image = pygame.transform.flip(image, True, False)
         self.walking_frames_l.append(image)
-        image = sprite_sheet.get_image(0, 93, 66, 90)
+        
+        image = sprite_sheet.get_image(0, player_h, player_w, player_h)
+        image = pygame.transform.scale(image, (player_w*3,player_h*3))
         image = pygame.transform.flip(image, True, False)
         self.walking_frames_l.append(image)
-        image = sprite_sheet.get_image(66, 93, 66, 90)
+        
+        image = sprite_sheet.get_image(player_w, player_h, player_w, player_h)
+        image = pygame.transform.scale(image, (player_w*3,player_h*3))
         image = pygame.transform.flip(image, True, False)
         self.walking_frames_l.append(image)
-        image = sprite_sheet.get_image(132, 93, 72, 90)
+        
+        image = sprite_sheet.get_image(player_w*2, player_h, player_w, player_h)
+        image = pygame.transform.scale(image, (player_w*3,player_h*3))
         image = pygame.transform.flip(image, True, False)
         self.walking_frames_l.append(image)
-        image = sprite_sheet.get_image(0, 186, 70, 90)
+
+        image = sprite_sheet.get_image(0, 2*player_h, player_w,player_h)
+        image = pygame.transform.scale(image, (player_w*3,player_h*3))
         image = pygame.transform.flip(image, True, False)
         self.walking_frames_l.append(image)
 
