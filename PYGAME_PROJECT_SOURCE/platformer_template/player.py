@@ -35,34 +35,11 @@ class Player(pygame.sprite.Sprite):
 
         # Call the parent's constructor
         pygame.sprite.Sprite.__init__(self)
-        player_w=134-2
+        player_w=134-4
         player_h=198+2
         sprite_sheet = SpriteSheet("template_char.png")
         # Load all the right facing images into a list
-        '''
-        image = sprite_sheet.get_image(0,0, player_w, player_h)
-        image = pygame.transform.scale(image, (player_w*3,player_h*3))
-        self.walking_frames_r.append(image)
-        image = sprite_sheet.get_image(0, 99*2, player_w, player_h)
-        image = pygame.transform.scale(image, (player_w*3,player_h*3))
-        self.walking_frames_r.append(image)
-        image = sprite_sheet.get_image(0,198*2, player_w, player_h)
-        image = pygame.transform.scale(image, (player_w*3,player_h*3))
-        self.walking_frames_r.append(image)
-        image = sprite_sheet.get_image(66*2, 0, player_w, player_h)
-        image = pygame.transform.scale(image, (player_w*3,player_h*3))
-        self.walking_frames_r.append(image)
-        image = sprite_sheet.get_image(66*2, 99*2, player_w, player_h)
-        image = pygame.transform.scale(image, (player_w*3,player_h*3))
-        self.walking_frames_r.append(image)
-        image = sprite_sheet.get_image(66*2, 198*2, player_w, player_h)
-        image = pygame.transform.scale(image, (player_w*3,player_h*3))
-        self.walking_frames_r.append(image)
-        image = sprite_sheet.get_image(134*2, 0, player_w, player_h)
-        image = pygame.transform.scale(image, (player_w*3,player_h*3))
-        self.walking_frames_r.append(image)
-        '''
-        
+      
         image = sprite_sheet.get_image(0, 0, player_w, player_h)
         image = pygame.transform.scale(image, (player_w*3,player_h*3))
         self.walking_frames_r.append(image)
@@ -100,7 +77,6 @@ class Player(pygame.sprite.Sprite):
         
         image = sprite_sheet.get_image(player_w, 0,player_w, player_h)
         image = pygame.transform.scale(image, (player_w*3,player_h*3))
-        image = pygame.transform.flip(image, True, False)
         self.walking_frames_l.append(image)
         
         image = sprite_sheet.get_image(player_w*2, 0, player_w, player_h)
@@ -115,9 +91,6 @@ class Player(pygame.sprite.Sprite):
         
         image = sprite_sheet.get_image(player_w, player_h, player_w, player_h)
         image = pygame.transform.scale(image, (player_w*3,player_h*3))
-        image = pygame.transform.flip(image, True, False)
-        self.walking_frames_l.append(image)
-        
         image = sprite_sheet.get_image(player_w*2, player_h, player_w, player_h)
         image = pygame.transform.scale(image, (player_w*3,player_h*3))
         image = pygame.transform.flip(image, True, False)
@@ -162,7 +135,9 @@ class Player(pygame.sprite.Sprite):
 
         # Move up/down
         self.rect.y += self.change_y
-
+     #   if self.change_y>0:
+     #      frame = (pos // 30) % len(self.jumping_frames)
+     #      self.image = self.jumping_frames   
         # Check and see if we hit anything
         block_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
         for block in block_hit_list:
@@ -197,9 +172,9 @@ class Player(pygame.sprite.Sprite):
         # move down a bit and see if there is a platform below us.
         # Move down 2 pixels because it doesn't work well if we only move down 1
         # when working with a platform moving down.
-        self.rect.y += 2
+        self.rect.y += 4
         platform_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
-        self.rect.y -= 2
+        self.rect.y -= 4
 
         # If it is ok to jump, set our speed upwards
         if len(platform_hit_list) > 0 or self.rect.bottom >= constants.SCREEN_HEIGHT:
@@ -208,12 +183,12 @@ class Player(pygame.sprite.Sprite):
     # Player-controlled movement:
     def go_left(self):
         """ Called when the user hits the left arrow. """
-        self.change_x = -6
+        self.change_x = -9
         self.direction = "L"
 
     def go_right(self):
         """ Called when the user hits the right arrow. """
-        self.change_x = 6
+        self.change_x = 9
         self.direction = "R"
 
     def stop(self):

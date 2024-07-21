@@ -93,15 +93,17 @@ def main():
         current_level.update()
 
         # If the player gets near the right side, shift the world left (-x)
-        if player.rect.x >= 500:
-            diff = player.rect.x - 500
-            player.rect.x = 500
+        velr=900
+        if player.rect.x >= velr:
+            diff = player.rect.x - velr
+            player.rect.x = velr
             current_level.shift_world(-diff)
 
         # If the player gets near the left side, shift the world right (+x)
-        if player.rect.x <= 120:
-            diff = 120 - player.rect.x
-            player.rect.x = 120
+        vell=500
+        if player.rect.x <= vell:
+            diff = vell - player.rect.x
+            player.rect.x = vell
             current_level.shift_world(diff)
 
         # If the player gets to the end of the level, go to the next level
@@ -112,6 +114,17 @@ def main():
                 current_level_no += 1
                 current_level = level_list[current_level_no]
                 player.level = current_level
+
+        if current_position == (0,0):
+            player.rect.x = 300
+            if current_level_no < len(level_list)-1:
+                current_level_no += 1
+                current_level = level_list[current_level_no]
+                player.level = current_level
+
+
+
+
 
         # ALL CODE TO DRAW SHOULD GO BELOW THIS COMMENT
         current_level.draw(screen)

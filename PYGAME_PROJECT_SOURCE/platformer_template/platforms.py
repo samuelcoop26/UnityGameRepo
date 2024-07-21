@@ -19,6 +19,8 @@ STONE_PLATFORM_LEFT   = (432, 720, 70, 40)
 STONE_PLATFORM_MIDDLE = (648, 648, 70, 40)
 STONE_PLATFORM_RIGHT  = (792, 648, 70, 40)
 
+SAND_PLATFORM1=(3,0,20,20)
+
 class Platform(pygame.sprite.Sprite):
     """ Platform the user can jump on """
 
@@ -29,6 +31,7 @@ class Platform(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
 
         sprite_sheet = SpriteSheet("tiles_spritesheet.png")
+        sprite_sheet2=SpriteSheet("sand_tiles.png")
         # Grab the image for this platform
         self.image = sprite_sheet.get_image(sprite_sheet_data[0],
                                             sprite_sheet_data[1],
