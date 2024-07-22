@@ -99,7 +99,7 @@ class Player(pygame.sprite.Sprite):
         # Move left/right
         self.rect.x += self.change_x
         pos = self.rect.x + self.level.world_shift
-        height= constants.SCREEN_HEIGHT  - self.rect.y
+        height= constants.SCREEN_HEIGHT - self.rect.y
 
         if self.jump_switch==0:
             frameh=0
@@ -109,11 +109,9 @@ class Player(pygame.sprite.Sprite):
             elif self.direction=="L":
                 frame = (pos // 30) % len(self.walking_frames_l)
                 self.image = self.walking_frames_l[frame]
-        #if self.jump_switch==1:
-            #for frame in range(0,len(self.jumping_frames_r)):
-            
-            #frameh=(height // 15) % len(self.jumping_frames_r)
+        
         if self.jump_switch==1:
+            #print(height)
             frameh=0
             if self.direction=="L":
                 #print(self.frameh)
@@ -122,20 +120,17 @@ class Player(pygame.sprite.Sprite):
                 self.image=self.jumping_frames_l[frameh]
             elif self.direction=="R":
                 frameh = (height // 40) % len(self.jumping_frames_r)
-                #print(frame)
+                print(frameh)
                 self.image=self.jumping_frames_r[frameh]
-            elif self.change_x==0:
-                frameh = (height // 40) % len(self.jumping_frames_r)
-                self.image=self.jumping_frames_r[frameh]
-            
-            print(frameh)
+
+            #print(frameh)
 
         #if self.frameh==6: self.frameh=0
         if self.change_y==0: 
             self.jump_switch=0
             frameh=0
-        if self.change_x==0 and self.direction=="R": self.image=self.walking_frames_r[0]
-        if self.change_x==0 and self.direction=="L": self.image=self.walking_frames_l[0]
+        if self.jump_switch==0 and self.change_x==0 and self.direction=="R": self.image=self.walking_frames_r[0]
+        if self.jump_switch==0 and self.change_x==0 and self.direction=="L": self.image=self.walking_frames_l[0]
         # See if we hit anything
         block_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
         for block in block_hit_list:
