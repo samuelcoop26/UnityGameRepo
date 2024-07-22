@@ -64,6 +64,7 @@ class Player(pygame.sprite.Sprite):
     # What direction is the player facing?
     direction = "R"
     jump_switch=0
+    crouch_switch=0
     # List of sprites we can bump against
     level = None
     
@@ -120,17 +121,24 @@ class Player(pygame.sprite.Sprite):
                 self.image=self.jumping_frames_l[frameh]
             elif self.direction=="R":
                 frameh = (height // 40) % len(self.jumping_frames_r)
-                print(frameh)
+                #print(frameh)
                 self.image=self.jumping_frames_r[frameh]
 
-            #print(frameh)
-
+        #crouching
+        if self.crouch_switch==1 and self.direction=="L":
+            self.image=self.jumping_frames_l[0]
+            self.rect.y=constants.SCREEN_HEIGHT-350
+            self.change_x=0
+        elif self.crouch_switch==1:
+            self.image=self.jumping_frames_r[0]
+            self.rect.y=constants.SCREEN_HEIGHT-350
+            self.change_x=0
         #if self.frameh==6: self.frameh=0
         if self.change_y==0: 
             self.jump_switch=0
             frameh=0
-        if self.jump_switch==0 and self.change_x==0 and self.direction=="R": self.image=self.walking_frames_r[0]
-        if self.jump_switch==0 and self.change_x==0 and self.direction=="L": self.image=self.walking_frames_l[0]
+        if self.jump_switch==0 and self.crouch_switch==0 and self.change_x==0 and self.direction=="R": self.image=self.walking_frames_r[0]
+        if self.jump_switch==0 and self.crouch_switch==0 and self.change_x==0 and self.direction=="L": self.image=self.walking_frames_l[0]
         # See if we hit anything
         block_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
         for block in block_hit_list:

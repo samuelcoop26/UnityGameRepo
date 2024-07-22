@@ -79,6 +79,8 @@ def main():
                     player.go_right()
                 if event.key == pygame.K_UP:
                     player.jump()
+                if event.key == pygame.K_DOWN:
+                    player.crouch_switch=1
 
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_LEFT and player.change_x < 0:
@@ -88,6 +90,8 @@ def main():
                 if event.key == pygame.K_UP and player.change_y ==0:
                     player.frameh=0
                     player.jump_switch=0
+                if event.key ==pygame.K_DOWN:
+                    player.crouch_switch=0
 
         # Update the player.
         active_sprite_list.update()
