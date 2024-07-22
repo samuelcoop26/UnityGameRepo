@@ -85,6 +85,9 @@ def main():
                     player.stop()
                 if event.key == pygame.K_RIGHT and player.change_x > 0:
                     player.stop()
+                if event.key == pygame.K_UP and player.change_y ==0:
+                    player.frameh=0
+                    player.jump_switch=0
 
         # Update the player.
         active_sprite_list.update()
